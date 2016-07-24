@@ -16,6 +16,17 @@ public class LinkCutter {
         }
 
         linkArr = link.split("/");
+        for(String str: linkArr)
+            System.out.print(str+"_");
+        System.out.println();
         return linkArr;
+    }
+
+    public String toOneURL(String ... someURL) {
+        String url="http://";
+        for(int i = 0; i < someURL.length; i++){
+            url = url+someURL[i]+"/";
+        }
+        return url;
     }
 }
