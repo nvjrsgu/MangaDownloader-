@@ -132,4 +132,13 @@ public class ToArray {
         return arrList;
     }
 
+    public Integer[] toOneArray(int[][] arr, int what){
+        Integer[] oneArr = new Integer[arr.length];
+        for(int i = 0; i < arr.length; i++){
+            System.out.println( arr[i][what]);
+            oneArr[i] = arr[i][what];
+        }
+        return oneArr;
+    }
+
 }
