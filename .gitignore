@@ -5,6 +5,7 @@
 *.war
 *.ear
 *.idea
-
+*.jpg
+*.png
 *.iml
 MangaDownloader-.iml
