@@ -99,4 +99,37 @@ public class ToArray {
         // System.out.println(mld.downloadList(link));
         return volChap;
     }
+
+    public ArrayList<String> fromArray(int[][] arr) {
+        ArrayList<String> arrList = new ArrayList<>();
+        for(int i = 0; i < arr.length; i++){
+            arrList.add("vol"+arr[i][0]+"/"+arr[i][1]);
+        }
+        return arrList;
+    }
+    public ArrayList<String> fromArray(int[][] arr, int Start, int End, boolean volOrChap) {
+        ArrayList<String> arrList = new ArrayList<>();
+        boolean key = false;
+        for(int i = 0; i < arr.length; i++){
+            if(volOrChap) {
+                if(key || Start == arr[i][0]) {
+                    if(End == arr[i][0]){
+                        break;
+                    }
+                    key = true;
+                    arrList.add("vol" + arr[i][0] + "/" + arr[i][1]);
+                }
+            } else {
+                if(key || Start == arr[i][1]) {
+                    if(End == arr[i][1]){
+                        break;
+                    }
+                    key = true;
+                    arrList.add("vol" + arr[i][0] + "/" + arr[i][1]);
+                }
+            }
+        }
+        return arrList;
+    }
+
 }
