@@ -55,5 +55,30 @@ public class LinkCutter {
         System.out.println("toOneString: "+url);
         return url;
     }
+    public String takeMangaName(String url){
+        String[] urlArr;
+        urlArr = url.split("/");
+        return urlArr[urlArr.length-1];
+    }
+
+    public String takeMangaHost(String url) {
+        //String
+        String linkArr[];
+        //Убираем ненужные символы
+        if (url.contains("http://")) {
+            url = url.replaceFirst("http://", "");
+        }
+        if (url.contains("\n")) {
+            url = url.replaceAll("\n", "");
+        }
+
+        linkArr = url.split("/");
+        /*
+        for(String str: linkArr)
+            System.out.print(str+"_");
+        System.out.println();
+        */
+        return linkArr[0];
+    }
 
 }
