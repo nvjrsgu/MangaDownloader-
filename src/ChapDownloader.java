@@ -31,15 +31,20 @@ public class ChapDownloader {
 
         f = new File(path);
 
-        if(!f.exists())
+        if(!f.exists()) {
             f.mkdirs();
-
-        for(String link: links){
-            im = lc.cutLink(link);
-            imageName = im[im.length-1];
-            System.out.println("Ссылка: "+link+"\nПуть: "+(path+imageName));
-            di.imageDownload(link,path+imageName);
+            for(String link: links){
+                im = lc.cutLink(link);
+                imageName = im[im.length-1];
+                System.out.println("Ссылка: "+link+"\nПуть: "+(path+imageName));
+                di.imageDownload(link,path+imageName);
+            }
+        } else {
+            System.out.println("Эта глава уже скачана");
         }
+
+
+
 
     }
 }
