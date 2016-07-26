@@ -10,3 +10,5 @@
 *.iml
 MangaDownloader-.iml
 *.properties
+mangadownloader-.xml
+*.MF
