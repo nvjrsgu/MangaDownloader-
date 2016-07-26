@@ -1,7 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-
 /**
  * Created by cjvnjde on 24.07.2016.
  */
@@ -9,28 +5,23 @@ public class LinkCutter {
     //делим ссылку по "/"
     //форматы ссылок:   http://site/page
     //                  site/page
-    public String[] cutLink(String url) {
-        try {
-            System.setErr(new PrintStream(new File("log.txt")));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+    public String[] splitUrl(String url) {
         String splittedUrl[];
 
         String cleanedUrl = cleanURL(url);
 
         splittedUrl = cleanedUrl.split("/");
 
-        //----------------------------------------
-        System.err.println("LinkCutter - cutLink");
+        //проверка
+        System.out.println("LinkCutter - cutLink");
         for(String str: splittedUrl) {
-            System.err.println("*_"+str+"_*");
+            System.out.print("_"+str+"_");
         }
-        //-----------------------------------------
+        System.out.println();
 
         return splittedUrl;
     }
+
 
 
     public String toOneURL(String ... someURL) {
@@ -68,33 +59,25 @@ public class LinkCutter {
         return url;
     }
 
+
+
+    //определить название манги
     public String takeMangaName(String url){
-        String[] urlArr;
-        urlArr = url.split("/");
-        return urlArr[urlArr.length-1];
+        String[] urlArr = splitUrl(url);
+        //проверка
+        System.out.println("LinkCutter - takeMangaHost\n"+urlArr[1]);
+        return urlArr[1];
     }
 
+    //определить ресурс манги
     public String takeMangaHost(String url) {
-        //String
-        String linkArr[];
-        //Убираем ненужные символы
-        if (url.contains("http://")) {
-            url = url.replaceFirst("http://", "");
-        }
-        if (url.contains("\n")) {
-            url = url.replaceAll("\n", "");
-        }
-
-        linkArr = url.split("/");
-        /*
-        for(String str: linkArr)
-            System.out.print(str+"_");
-        System.out.println();
-        */
-        return linkArr[0];
+        String[] urlArr = splitUrl(url);
+        //проверка
+        System.out.println("LinkCutter - takeMangaHost\n"+urlArr[0]);
+        return urlArr[0];
     }
 
-    
+
     //очистка мусора из ссылки
     private String cleanURL(String url) {
         //Убираем ненужные символы
