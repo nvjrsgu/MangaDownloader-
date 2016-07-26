@@ -7,11 +7,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
 	   LinkCutter lc= new LinkCutter();
-        String cuttedLink[] = lc.cutLink("http://readmanga.me/fairytail/vol58/494/ / / ");
-       for(String str: cuttedLink){
-            System.out.println(str);
-        }
+        String cuttedLink[] = lc.splitUrl("http://readmanga.me/fairytail/vol58/494/ / / ");
+        String name = lc.takeMangaName("http://readmanga.me/fairytail/vol58/494/ / / ");
+        String host = lc.takeMangaHost("http://readmanga.me/fairytail/vol58/494/ / / ");
 
+        MangaSearchChapters msc = new MangaSearchChapters();
+        msc.searchChapters("http://readmanga.me/bleach_", false);
         /*
         String manga = "http://readmanga.me/noblesse";
         MangaList mn = new MangaList();

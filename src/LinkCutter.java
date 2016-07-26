@@ -15,7 +15,7 @@ public class LinkCutter {
         //проверка
         System.out.println("LinkCutter - cutLink");
         for(String str: splittedUrl) {
-            System.out.print("_"+str+"_");
+            System.out.print("*"+str+"*");
         }
         System.out.println();
 
@@ -89,6 +89,9 @@ public class LinkCutter {
         }
         if (url.contains(" ")){
             url = url.replaceAll(" ", "");
+        }
+        if(url.indexOf("/")==0){
+            url = url.substring(2);
         }
         return url;
     }

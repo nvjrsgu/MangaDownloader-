@@ -1,3 +1,7 @@
+/**
+ * Created by cjvnj on 26.07.2016.
+ */
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -7,29 +11,37 @@ import java.util.LinkedHashSet;
  * Created by cjvnj on 24.07.2016.
  */
 public class MangaList {
-    LinkedHashSet<String> downloadList(String mangaLink) throws IOException {
-        URL url = new URL(mangaLink);
-        String str = "";
-        //Получение названия манги
-        String mangaName;
+
+    //получение списка глав из ссылки
+    //формат ссылки http://site/page
+    //                  site/page
+    //                  http://site/page/etc/...
+    //                  site/page/etc/...
+    LinkedHashSet<String> downloadList(String mUrl) throws IOException {
         LinkCutter lc = new LinkCutter();
-        String[] arrLink = lc.splitUrl(mangaLink);
-        mangaName = arrLink[1];
+        //берем из ссылки нужные части
+        String mangaName = lc.takeMangaName(mUrl);
+        String mangaHost = lc.takeMangaHost(mUrl);
 
-        //переместить в конец
-        System.out.println();
-        System.out.println("URL манги: " + url);
-        System.out.println("Название манги: " + mangaName);
+        //заново создаем ссылку
+        String mangaUrl = "http://"+mangaHost+"/"+mangaName;
 
+        System.out.println("MangaSearchChapters - searchChapters");
+        System.out.println("mangaUrl: "+mangaUrl);
+
+        URL url = new URL(mangaUrl);
+        InputStreamReader inpStream = new InputStreamReader(url.openStream());
+        FileOutputStream fout = new FileOutputStream(mangaName+".txt");
 
         LinkedHashSet<String> arrr = new LinkedHashSet<>();
         int i = 0;
-        InputStreamReader inpStream = new InputStreamReader(url.openStream());
+        String str = "";
         int count = 0;
         boolean linkT = false;
 
         while (i != -1) {
             i = inpStream.read();
+            fout.write(i);
 
             if (linkT || i == '<') {
                 if (i == '\"')
