@@ -59,22 +59,54 @@ public class LinkCutter {
         return url;
     }
 
-
+    //определить ресурс манги
+    public String takeMangaHost(String url) {
+        String[] urlArr = splitUrl(url);
+        //проверка
+        if(urlArr.length>=1) {
+            System.out.println("LinkCutter - takeMangaHost\n"+urlArr[0]);
+            return urlArr[0];
+        } else {
+            System.out.println("LinkCutter - takeMangaHost\nnot found host");
+            return "not found host";
+        }
+    }
 
     //определить название манги
     public String takeMangaName(String url){
         String[] urlArr = splitUrl(url);
         //проверка
-        System.out.println("LinkCutter - takeMangaHost\n"+urlArr[1]);
-        return urlArr[1];
+        if(urlArr.length>=2) {
+            System.out.println("LinkCutter - takeMangaHost\n"+urlArr[1]);
+            return urlArr[1];
+        } else {
+            System.out.println("LinkCutter - takeMangaHost\nnot found name");
+            return "not found name";
+        }
     }
 
-    //определить ресурс манги
-    public String takeMangaHost(String url) {
+    public String takeMangaVol(String url) {
+        String[] urlArr = splitUrl(url);
+        if(urlArr.length>=3) {
+            System.out.println("LinkCutter - takeMangaHost\n"+urlArr[2]);
+            return urlArr[2];
+        } else {
+            System.out.println("LinkCutter - takeMangaHost\nnot found vol");
+            return "not found vol";
+        }
+    }
+
+    public String takeMangaChap(String url) {
         String[] urlArr = splitUrl(url);
         //проверка
-        System.out.println("LinkCutter - takeMangaHost\n"+urlArr[0]);
-        return urlArr[0];
+
+        if(urlArr.length>=4) {
+            System.out.println("LinkCutter - takeMangaHost\n"+urlArr[3]);
+            return urlArr[3];
+        } else {
+            System.out.println("LinkCutter - takeMangaHost\nnot found chapter");
+            return "not found chapter";
+        }
     }
 
 

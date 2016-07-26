@@ -12,7 +12,9 @@ public class Main {
         String host = lc.takeMangaHost("http://readmanga.me/fairytail/vol58/494/ / / ");
 
         MangaSearchChapters msc = new MangaSearchChapters();
-        msc.searchChapters("http://readmanga.me/bleach_", false);
+        String chapUrls[] = msc.searchChapters("http://readmanga.me/bleach_", true);
+        ChapterSearchImages csi = new ChapterSearchImages();
+        csi.searchImages("http://readmanga.me/fairytail/vol58/494");
         /*
         String manga = "http://readmanga.me/noblesse";
         MangaList mn = new MangaList();
