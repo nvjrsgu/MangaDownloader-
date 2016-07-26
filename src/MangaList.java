@@ -13,7 +13,7 @@ public class MangaList {
         //Получение названия манги
         String mangaName;
         LinkCutter lc = new LinkCutter();
-        String[] arrLink = lc.cutLink(mangaLink);
+        String[] arrLink = lc.splitUrl(mangaLink);
         mangaName = arrLink[1];
 
         //переместить в конец

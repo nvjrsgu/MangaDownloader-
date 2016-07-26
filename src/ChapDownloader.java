@@ -17,7 +17,7 @@ public class ChapDownloader {
         links = il.imLink(chapUrl);
 
         lc = new LinkCutter();
-        String[] cutted = lc.cutLink(chapUrl);
+        String[] cutted = lc.splitUrl(chapUrl);
 
         String path = lc.toOneString1(cutted);
 
@@ -34,7 +34,7 @@ public class ChapDownloader {
         if(!f.exists()) {
             f.mkdirs();
             for(String link: links){
-                im = lc.cutLink(link);
+                im = lc.splitUrl(link);
                 imageName = im[im.length-1];
                 System.out.println("Ссылка: "+link+"\nПуть: "+(path+imageName));
                 di.imageDownload(link,path+imageName);

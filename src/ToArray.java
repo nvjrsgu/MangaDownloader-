@@ -15,7 +15,7 @@ public class ToArray {
         int i = 0;
 
         for(String str2: linkHash){
-            String[] arr1 = lcut.cutLink(str2);
+            String[] arr1 = lcut.splitUrl(str2);
             //System.out.println("Размер массива"+arr1.length);
             if(arr1.length>2) {
                 //System.out.println(arr1);
