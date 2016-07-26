@@ -30,13 +30,9 @@ public class ImagesDownloader {
 
                 splittedImageUrl = lc.splitUrl(im);
                 String imageName = splittedImageUrl[splittedImageUrl.length - 1];
-                System.out.println("ImagesDownloader - downloadImages");
+                System.out.println("ImagesDownloader - searchChapters");
                 System.out.println("Ссылка: " + im + "\nПуть: " + (path + imageName));
-                try {
-                    di.imageDownload(im, path + imageName);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                di.imageDownload(im, path + imageName);
             }
         } else {
             System.out.println("Эта глава уже скачана");
