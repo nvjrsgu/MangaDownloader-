@@ -1,71 +1,93 @@
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Created by cjvnj on 26.07.2016.
  */
 public class ChapterSearchImages {
-    public String[] imLink(String chapUrl) {
-        URL url1 = new URL(mangaLink);
-        InputStreamReader buffStr = new InputStreamReader(url1.openStream());
-        //FileOutputStream files = new FileOutputStream("enigma1.txt");
+    /*
+    Поиск ссылок на изображения в главах
+    формат ссылки   http://host.xu/name/vol/chap
+                    host.xu/name/vol/chap
+     */
+    public String[] searchImages(String chapUrl) {
+        LinkCutter lc = new LinkCutter();
+        String mangaName = lc.takeMangaName(chapUrl);
+        String mangaVol = lc.takeMangaVol(chapUrl);
+        String mangaChap = lc.takeMangaChap(chapUrl);
+        String mangaHost = lc.takeMangaHost(chapUrl);
+
+        chapUrl = "http://"+mangaHost+"/"+mangaName+"/"+mangaVol+"/"+mangaChap;
+        URL url = null;
+        try {
+            url = new URL(chapUrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        InputStreamReader inpStream = null;
+        FileOutputStream files = null;
+        try {
+            inpStream = new InputStreamReader(url.openStream());
+            files = new FileOutputStream(mangaName+"_"+mangaVol+"_"+"ch"+mangaChap+".txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        int i=0;
+
         String str = "";
-        String str2 = "";
-        int read=0;
-        boolean key = false;
-        ArrayList<String> arr1 = new ArrayList<>();
-        while(read != -1){
-            read = buffStr.read();
-            str +=  (char) read;
-            if(read == '\n'){
-                //находим строку с ссылками на изображения
+        String[] imagesLinks = null;
+
+        while(i != -1) {
+            try {
+                i = inpStream.read();
+                files.write(i);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(i != '\n'){
+                str += (char) i;
+            } else {
                 if(str.contains("rm_h.init")){
-                    str2 = str;
+                    System.out.println(str);
+                    str = str.replaceAll("\'","\"").replaceAll(" ", "").replaceAll("\\[","").
+                            replaceAll("]", ",").replaceAll("\"","").replaceAll("\\(", ",");
+                    System.out.println(str);
+                    imagesLinks = str.split(",");
+                    break;
                 }
-                //System.out.print(str);
                 str = "";
             }
         }
-        str2 = str2.replaceAll("\\[", "|").replaceAll("\\]","|").replaceAll("'","\"").replaceAll(",", "");
-        String[] strArr = str2.split("\"");
-        for(String h: strArr)
-            System.out.println(h);
-        System.out.print(str2);
 
-        String arr4;
-        String arr2;
-        String arr3;
-        arr4 = "";
-        arr2 = "";
-        arr3 ="";
-        ArrayList<String> arrL = new ArrayList<>();
-        int counter = 0;
-
-        for(int i = 0; i < strArr.length; i++){
-            if(strArr[i].contains("/")){
-                System.out.println(strArr[i]);
-                switch (counter) {
-                    case 0: arr2 = strArr[i];
-                        counter++;
+        String[] imageParts = new String[3];
+        LinkedList<String> llImages = new LinkedList<>();
+        int count = 0;
+        for(int n = 0; n < imagesLinks.length; n++){
+            if(imagesLinks[n].contains("/")){
+                switch (count) {
+                    case 0: imageParts[1] = imagesLinks[n];
+                        count++;
                         break;
-                    case 1: arr4 = strArr[i];
-                        counter++;
+                    case 1: imageParts[0] = imagesLinks[n];
+                        count++;
                         break;
-                    case 2: arr3 = strArr[i];
-                        arrL.add(arr4+arr2+arr3);
-                        counter = 0;
+                    case 2: imageParts[2] = imagesLinks[n];
+                        llImages.push(imageParts[0]+imageParts[1]+imageParts[2]);
+                        count = 0;
                         break;
                 }
             }
         }
-        System.out.println(arrL);
-        String[] stf = new String[arrL.size()];
 
-        stf = arrL.toArray(stf);
-        for(String gg: stf)
-            System.out.println(gg);
-        return stf;
+        System.out.println(llImages);
+
+        String[] fullImageLinks = new String[llImages.size()];
+        fullImageLinks = llImages.toArray(fullImageLinks);
+        return fullImageLinks;
     }
 }
