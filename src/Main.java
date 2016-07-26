@@ -5,12 +5,14 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-/*
+
 	   LinkCutter lc= new LinkCutter();
-        //String cuttedLink[] = lc.cutLink("http://readmanga.me/fairytail/vol58/494");
-       // for(String str: cuttedLink){
-       //     System.out.println(str);
-       // }
+        String cuttedLink[] = lc.cutLink("http://readmanga.me/fairytail/vol58/494/ / / ");
+       for(String str: cuttedLink){
+            System.out.println(str);
+        }
+
+        /*
         String manga = "http://readmanga.me/noblesse";
         MangaList mn = new MangaList();
         LinkedHashSet<String> lhs = mn.downloadList(manga);
@@ -46,7 +48,7 @@ public class Main {
           //cd.chapD(url1+chap);
         }
 */
-        SwingUtilities.invokeLater(() -> new MainGUI());
+        //SwingUtilities.invokeLater(() -> new MainGUI());
 
     }
 }
