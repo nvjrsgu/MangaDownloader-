@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import javax.swing.event.*;
+/*
 /**
  * Created by cjvnj on 25.07.2016.
  */
-public class MainGUI extends Frame implements ListSelectionListener {
-
+public class MainGUI extends Frame/* implements ListSelectionListener*/ {
+/*
     //панели для списка глав/томов
     JScrollPane jscrpStart, jscrlEnd;
     //список глав/томов
@@ -31,6 +32,7 @@ public class MainGUI extends Frame implements ListSelectionListener {
     int start, end;
 
     DefaultListModel<String> dlm;
+*/
 
     MainGUI() {
         //основное окно
@@ -39,6 +41,7 @@ public class MainGUI extends Frame implements ListSelectionListener {
         jfrm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //jfrm.setMinimumSize(new Dimension(300, 300));
         jfrm.setSize(280, 100);
+        /*
         start = -1;
         end = -1;
 
@@ -129,9 +132,14 @@ public class MainGUI extends Frame implements ListSelectionListener {
         jfrm.add(jpnlURL);
         //jfrm.add(jpnlStEnd);
         //jfrm.add(jpnlButton);
-
+*/
         jfrm.setVisible(true);
+    }
+    public void ma(){
 
+    }
+}
+/*
     }
 
     //создание основных элементов
@@ -180,6 +188,7 @@ public class MainGUI extends Frame implements ListSelectionListener {
 
 */
         //поле ввода адреса
+/*
         jlabURL = new JLabel("Введите url манги:");
         jtfURL = new JTextField(20);
     }
@@ -206,8 +215,8 @@ public class MainGUI extends Frame implements ListSelectionListener {
         jpnlButton.add(jbtnBegin);
         */
 
-    }
-
+    //}
+/*
     public void mangaList(String url) {
         MangaList mn = new MangaList();
         ToArray ta = new ToArray();
@@ -237,3 +246,4 @@ public class MainGUI extends Frame implements ListSelectionListener {
         }
     }
 }
+*/
