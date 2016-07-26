@@ -77,10 +77,10 @@ public class LinkCutter {
         String[] urlArr = splitUrl(url);
         //проверка
         if(urlArr.length>=2) {
-            System.out.println("LinkCutter - takeMangaHost\n"+urlArr[1]);
+            System.out.println("LinkCutter - takeMangaName\n"+urlArr[1]);
             return urlArr[1];
         } else {
-            System.out.println("LinkCutter - takeMangaHost\nnot found name");
+            System.out.println("LinkCutter - takeMangaName\nnot found name");
             return "not found name";
         }
     }
@@ -123,7 +123,9 @@ public class LinkCutter {
             url = url.replaceAll(" ", "");
         }
         if(url.indexOf("/")==0){
+
             url = url.substring(2);
+            System.out.println("cleanURL: "+url);
         }
         return url;
     }
