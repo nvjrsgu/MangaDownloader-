@@ -15,8 +15,11 @@ public class Main {
         String chapUrls[] = msc.searchChapters("http://readmanga.me/bleach_", true);
         ChapterSearchImages csi = new ChapterSearchImages();
         String imArr[] = csi.searchImages("http://readmanga.me/fairytail/vol58/494");
-        ImagesDownloader id = new ImagesDownloader();
-        id.downloadImages("http://readmanga.me/fairytail/vol58/494");
+       //ImagesDownloader id = new ImagesDownloader();
+        //id.downloadImages("http://readmanga.me/fairytail/vol58/494");
+        Consol con = new Consol();
+        //System.out.println("Range");
+        //DownloadRange dr = new DownloadRange(chapUrls,"vol47/408","vol47/409","http://readmanga.me/bleach_");
         /*
         String manga = "http://readmanga.me/noblesse";
         MangaList mn = new MangaList();

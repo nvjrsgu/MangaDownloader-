@@ -109,7 +109,8 @@ public class MangaSearchChapters {
                     chapUrl = str.substring(0, str.indexOf('\"'));
                     chapUrl = chapUrl.replaceAll((mangaName), "");
                     String[] splittedChapUrl = lc.splitUrl(chapUrl);
-                    System.out.println(chapUrl);
+                   // System.out.println("MangaSearchChapters - searchChapters");
+                    //System.out.println("chapUrl "+chapUrl);
                     //выбрать разделитель false = "-" true = "/"
                     als.push(splittedChapUrl[0]+sep+splittedChapUrl[1]);
                 }
@@ -124,7 +125,7 @@ public class MangaSearchChapters {
             System.out.println("Содержимое массива: "+s);
         }
         */
-        //System.out.println(als);
+        System.out.println(als);
         return chaps;
     }
 }
