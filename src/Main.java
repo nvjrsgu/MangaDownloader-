@@ -1,15 +1,17 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.io.File;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+/*
 	   LinkCutter lc= new LinkCutter();
         //String cuttedLink[] = lc.cutLink("http://readmanga.me/fairytail/vol58/494");
        // for(String str: cuttedLink){
        //     System.out.println(str);
        // }
-        String manga = "http://readmanga.me/yukarism";
+        String manga = "http://readmanga.me/noblesse";
         MangaList mn = new MangaList();
         LinkedHashSet<String> lhs = mn.downloadList(manga);
         System.out.println(lhs);
@@ -41,9 +43,10 @@ public class Main {
         ChapDownloader cd = new ChapDownloader();
         for(String chap: arrList) {
             System.out.println("глава: "+chap);
-          cd.chapD(url1+chap);
+          //cd.chapD(url1+chap);
         }
-
+*/
+        SwingUtilities.invokeLater(() -> new MainGUI());
 
     }
 }
