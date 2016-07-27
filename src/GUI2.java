@@ -16,14 +16,19 @@ public class GUI2 extends JFrame {
     int first_index, last_index;
     String start, finish;
     JCheckBox jcb;
+    //Image icon;
 
     GUI2() {
         JFrame jfrm = new JFrame();
+        //после упаковки иконка появится
+        //icon = Toolkit.getDefaultToolkit().getImage("icon.png");
+       // jfrm.setIconImage(icon);
         jfrm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jfrm.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         jfrm.setSize(new Dimension(400,380));
         jfrm.setMinimumSize(new Dimension(360,360));
+
         jpnl_top = new JPanel();
         jcb = new JCheckBox("Загрузить главы в одну папку?");
         jcb.setSelected(true);
