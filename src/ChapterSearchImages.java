@@ -20,8 +20,11 @@ public class ChapterSearchImages {
         String mangaVol = lc.takeMangaVol(chapUrl);
         String mangaChap = lc.takeMangaChap(chapUrl);
         String mangaHost = lc.takeMangaHost(chapUrl);
-
-        chapUrl = "http://"+mangaHost+"/"+mangaName+"/"+mangaVol+"/"+mangaChap;
+        if(mangaHost.compareTo("mintmanga.com")==0) {
+            chapUrl = "http://" + mangaHost + "/" + mangaName + "/" + mangaVol + "/" + mangaChap+"?mature=1";
+        } else {
+            chapUrl = "http://" + mangaHost + "/" + mangaName + "/" + mangaVol + "/" + mangaChap;
+        }
         URL url = null;
         try {
             url = new URL(chapUrl);
@@ -29,10 +32,10 @@ public class ChapterSearchImages {
             e.printStackTrace();
         }
         InputStreamReader inpStream = null;
-     //   FileOutputStream files = null;
+      //  FileOutputStream files = null;
         try {
             inpStream = new InputStreamReader(url.openStream());
-      //      files = new FileOutputStream(mangaName+"_"+mangaVol+"_"+"ch"+mangaChap+".txt");
+      //     files = new FileOutputStream(mangaName+"_"+mangaVol+"_"+"ch"+mangaChap+".txt");
       } catch (IOException e) {
            e.printStackTrace();
         }
@@ -45,7 +48,7 @@ public class ChapterSearchImages {
         while(i != -1) {
             try {
                 i = inpStream.read();
-          //      files.write(i);
+       //         files.write(i);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -53,11 +56,12 @@ public class ChapterSearchImages {
                 str += (char) i;
             } else {
                 if(str.contains("rm_h.init")){
-                 //   System.out.println(str);
-                    str = str.replaceAll("\'","\"").replaceAll(" ", "").replaceAll("\\[","").
-                            replaceAll("]", ",").replaceAll("\"","").replaceAll("\\(", ",");
                   //  System.out.println(str);
+                    str = str.replaceAll("\'",",").replaceAll(" ", ",").replaceAll("\\[",",").
+                            replaceAll("]", ",").replaceAll("\"",",").replaceAll("\\(", ",").replaceAll("\\)", ",");
+                   //System.out.println(str);
                     imagesLinks = str.split(",");
+
                     break;
                 }
                 str = "";
@@ -67,6 +71,7 @@ public class ChapterSearchImages {
         String[] imageParts = new String[3];
         LinkedList<String> llImages = new LinkedList<>();
         int count = 0;
+
         for(int n = 0; n < imagesLinks.length; n++){
             if(imagesLinks[n].contains("/")){
                 switch (count) {

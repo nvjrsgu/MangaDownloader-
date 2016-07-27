@@ -5,18 +5,18 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+/*
 
-        /*
 	   LinkCutter lc= new LinkCutter();
         String cuttedLink[] = lc.splitUrl("http://readmanga.me/fairytail/vol58/494/ / / ");
         String name = lc.takeMangaName("http://readmanga.me/fairytail/vol58/494/ / / ");
         String host = lc.takeMangaHost("http://readmanga.me/fairytail/vol58/494/ / / ");
 
         MangaSearchChapters msc = new MangaSearchChapters();
-        String chapUrls[] = msc.searchChapters("http://readmanga.me/bleach_", true);
+        String chapUrls[] = msc.searchChapters("http://mintmanga.com/sun_ken_rock", true);
         ChapterSearchImages csi = new ChapterSearchImages();
-        String imArr[] = csi.searchImages("http://readmanga.me/fairytail/vol58/494");
-        */
+        String imArr[] = csi.searchImages("http://mintmanga.com/sun_ken_rock/vol25/171");
+*/
 
        //ImagesDownloader id = new ImagesDownloader();
         //id.downloadImages("http://readmanga.me/fairytail/vol58/494");
@@ -59,7 +59,7 @@ public class Main {
           //cd.chapD(url1+chap);
         }
 */
-        SwingUtilities.invokeLater(() -> new GUI2());
+       SwingUtilities.invokeLater(() -> new GUI2());
 
     }
 }
