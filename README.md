@@ -1,4 +1,3 @@
 # MangaDownloader-
-[cсылка](https://github.com/nvjrsgu/MangaDownloader-/blob/master/out/MangaDownloader-.jar) на первую сборку
+[MangaDownloaderV0.2](https://github.com/nvjrsgu/MangaDownloader-/blob/master/out/MangaDownloader-.jar)
 
->Название манги в формате: http://readmanga.me/mangaName
