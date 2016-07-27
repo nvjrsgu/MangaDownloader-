@@ -6,6 +6,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        /*
 	   LinkCutter lc= new LinkCutter();
         String cuttedLink[] = lc.splitUrl("http://readmanga.me/fairytail/vol58/494/ / / ");
         String name = lc.takeMangaName("http://readmanga.me/fairytail/vol58/494/ / / ");
@@ -15,9 +16,11 @@ public class Main {
         String chapUrls[] = msc.searchChapters("http://readmanga.me/bleach_", true);
         ChapterSearchImages csi = new ChapterSearchImages();
         String imArr[] = csi.searchImages("http://readmanga.me/fairytail/vol58/494");
+        */
+
        //ImagesDownloader id = new ImagesDownloader();
         //id.downloadImages("http://readmanga.me/fairytail/vol58/494");
-        Consol con = new Consol();
+        //Consol con = new Consol();
         //System.out.println("Range");
         //DownloadRange dr = new DownloadRange(chapUrls,"vol47/408","vol47/409","http://readmanga.me/bleach_");
         /*
@@ -56,7 +59,7 @@ public class Main {
           //cd.chapD(url1+chap);
         }
 */
-        //SwingUtilities.invokeLater(() -> new MainGUI());
+        SwingUtilities.invokeLater(() -> new GUI2());
 
     }
 }

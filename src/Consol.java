@@ -7,6 +7,9 @@ import static java.lang.System.*;
 /**
  * Created by cjvnj on 26.07.2016.
  */
+/*
+временная консоль для теста
+ */
 public class Consol{
     String chapUrls[];
     String start, finish;
