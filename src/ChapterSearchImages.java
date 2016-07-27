@@ -29,12 +29,12 @@ public class ChapterSearchImages {
             e.printStackTrace();
         }
         InputStreamReader inpStream = null;
-        FileOutputStream files = null;
+     //   FileOutputStream files = null;
         try {
             inpStream = new InputStreamReader(url.openStream());
-            files = new FileOutputStream(mangaName+"_"+mangaVol+"_"+"ch"+mangaChap+".txt");
-        } catch (IOException e) {
-            e.printStackTrace();
+      //      files = new FileOutputStream(mangaName+"_"+mangaVol+"_"+"ch"+mangaChap+".txt");
+      } catch (IOException e) {
+           e.printStackTrace();
         }
 
         int i=0;
@@ -45,7 +45,7 @@ public class ChapterSearchImages {
         while(i != -1) {
             try {
                 i = inpStream.read();
-                files.write(i);
+          //      files.write(i);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -53,10 +53,10 @@ public class ChapterSearchImages {
                 str += (char) i;
             } else {
                 if(str.contains("rm_h.init")){
-                    System.out.println(str);
+                 //   System.out.println(str);
                     str = str.replaceAll("\'","\"").replaceAll(" ", "").replaceAll("\\[","").
                             replaceAll("]", ",").replaceAll("\"","").replaceAll("\\(", ",");
-                    System.out.println(str);
+                  //  System.out.println(str);
                     imagesLinks = str.split(",");
                     break;
                 }
@@ -84,7 +84,7 @@ public class ChapterSearchImages {
             }
         }
 
-        System.out.println(llImages);
+       // System.out.println(llImages);
 
         String[] fullImageLinks = new String[llImages.size()];
         fullImageLinks = llImages.toArray(fullImageLinks);

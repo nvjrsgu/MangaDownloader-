@@ -25,8 +25,8 @@ public class MangaSearchChapters {
         //заново создаем ссылку
         String mangaUrl = "http://"+mangaHost+"/"+mangaName;
 
-        System.out.println("MangaSearchChapters - searchChapters");
-        System.out.println("mangaUrl: "+mangaUrl);
+       // System.out.println("MangaSearchChapters - searchChapters");
+        //System.out.println("mangaUrl: "+mangaUrl);
 
         LinkedList<String> als = new LinkedList<>();
         int i = 0;
@@ -57,19 +57,19 @@ public class MangaSearchChapters {
             System.out.println("MangaSearchChapters - searchChapters");
             System.out.println("Ошибка IO(url.openStream): "+e);
         }
-        FileOutputStream fout = null;
-        try {
-            fout = new FileOutputStream(mangaName+".txt");
+       // FileOutputStream fout = null;
+       // try {
+      //      fout = new FileOutputStream(mangaName+".txt");
 
-        } catch (FileNotFoundException e) {
-            System.out.println("MangaSearchChapters - searchChapters");
-            System.out.println("ошибка файла: "+e);
-        }
+     //   } catch (FileNotFoundException e) {
+     //       System.out.println("MangaSearchChapters - searchChapters");
+     //       System.out.println("ошибка файла: "+e);
+    //    }
 
         while (i != -1) {
             try {
                 i = inpStream.read();
-                fout.write(i);
+            //    fout.write(i);
             } catch (IOException e) {
                 System.out.println("MangaSearchChapters - searchChapters");
                 System.out.println("Ошибка IO(read/write): "+e);
@@ -125,7 +125,7 @@ public class MangaSearchChapters {
             System.out.println("Содержимое массива: "+s);
         }
         */
-        System.out.println(als);
+      //  System.out.println(als);
         return chaps;
     }
 }

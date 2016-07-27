@@ -30,8 +30,8 @@ public class ImagesDownloader {
 
                 splittedImageUrl = lc.splitUrl(im);
                 String imageName = splittedImageUrl[splittedImageUrl.length - 1];
-                System.out.println("ImagesDownloader - searchChapters");
-                System.out.println("Ссылка: " + im + "\nПуть: " + (path + imageName));
+               // System.out.println("ImagesDownloader - searchChapters");
+             //   System.out.println("Ссылка: " + im + "\nПуть: " + (path + imageName));
                 di.imageDownload(im, path + imageName);
             }
         } else {
@@ -60,8 +60,8 @@ public class ImagesDownloader {
             for (String im : imageUrls) {
                 splittedImageUrl = lc.splitUrl(im);
                 String imageName = mangaName+"_"+mangaVol+"_"+mangaChap+"_"+splittedImageUrl[splittedImageUrl.length - 1];
-                System.out.println("ImagesDownloader - searchChapters");
-                System.out.println("Ссылка: " + im + "\nПуть: " + (path + imageName));
+            //    System.out.println("ImagesDownloader - searchChapters");
+             //   System.out.println("Ссылка: " + im + "\nПуть: " + (path + imageName));
                 di.imageDownload(im, path + imageName);
             }
         }

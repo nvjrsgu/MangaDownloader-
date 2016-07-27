@@ -13,50 +13,13 @@ public class LinkCutter {
         splittedUrl = cleanedUrl.split("/");
 
         //проверка
-        System.out.println("LinkCutter - cutLink");
-        for(String str: splittedUrl) {
-            System.out.print("*"+str+"*");
-        }
-        System.out.println();
+        //System.out.println("LinkCutter - cutLink");
+        //for(String str: splittedUrl) {
+       //     System.out.print("*"+str+"*");
+       // }
+        //System.out.println();
 
         return splittedUrl;
-    }
-
-
-
-    public String toOneURL(String ... someURL) {
-        String url="http://";
-        for(int i = 0; i < someURL.length; i++){
-            url = url+someURL[i]+"/";
-        }
-        return url;
-    }
-
-    public String toOneString1(String ... someURL) {
-        String url="";
-        boolean key = false;
-        for(int i = 0; i < someURL.length; i++){
-            if(someURL[i].contains("vol")||key) {
-                key = true;
-                url = url + someURL[i-1]+"/";
-            }
-        }
-        url += someURL[someURL.length-1]+"/";
-        System.out.println("toOneString: "+url);
-        return url;
-    }
-
-    public String toOneString(String ... someURL) {
-        String url="";
-        boolean key = false;
-        for(int i = 0; i < someURL.length; i++){
-            if(someURL[i].contains("vol")||key) {
-                key = true;
-                url = url + someURL[i]+"\\";
-            }
-        }
-        System.out.println("toOneString: "+url);
-        return url;
     }
 
     //определить ресурс манги
@@ -64,10 +27,10 @@ public class LinkCutter {
         String[] urlArr = splitUrl(url);
         //проверка
         if(urlArr.length>=1) {
-            System.out.println("LinkCutter - takeMangaHost\n"+urlArr[0]);
+            //System.out.println("LinkCutter - takeMangaHost\n"+urlArr[0]);
             return urlArr[0];
         } else {
-            System.out.println("LinkCutter - takeMangaHost\nnot found host");
+            //System.out.println("LinkCutter - takeMangaHost\nnot found host");
             return "not found host";
         }
     }
@@ -77,10 +40,10 @@ public class LinkCutter {
         String[] urlArr = splitUrl(url);
         //проверка
         if(urlArr.length>=2) {
-            System.out.println("LinkCutter - takeMangaName\n"+urlArr[1]);
+            //System.out.println("LinkCutter - takeMangaName\n"+urlArr[1]);
             return urlArr[1];
         } else {
-            System.out.println("LinkCutter - takeMangaName\nnot found name");
+            //System.out.println("LinkCutter - takeMangaName\nnot found name");
             return "not found name";
         }
     }
@@ -88,10 +51,10 @@ public class LinkCutter {
     public String takeMangaVol(String url) {
         String[] urlArr = splitUrl(url);
         if(urlArr.length>=3) {
-            System.out.println("LinkCutter - takeMangaHost\n"+urlArr[2]);
+          //  System.out.println("LinkCutter - takeMangaHost\n"+urlArr[2]);
             return urlArr[2];
         } else {
-            System.out.println("LinkCutter - takeMangaHost\nnot found vol");
+         //   System.out.println("LinkCutter - takeMangaHost\nnot found vol");
             return "not found vol";
         }
     }
@@ -101,10 +64,10 @@ public class LinkCutter {
         //проверка
 
         if(urlArr.length>=4) {
-            System.out.println("LinkCutter - takeMangaHost\n"+urlArr[3]);
+           // System.out.println("LinkCutter - takeMangaHost\n"+urlArr[3]);
             return urlArr[3];
         } else {
-            System.out.println("LinkCutter - takeMangaHost\nnot found chapter");
+           // System.out.println("LinkCutter - takeMangaHost\nnot found chapter");
             return "not found chapter";
         }
     }
@@ -125,7 +88,7 @@ public class LinkCutter {
         if(url.indexOf("/")==0){
 
             url = url.substring(2);
-            System.out.println("cleanURL: "+url);
+          // System.out.println("cleanURL: "+url);
         }
         return url;
     }

@@ -47,9 +47,9 @@ public class DownloadRange {
 
         LinkCutter lc = new LinkCutter();
         boolean format;
-        System.out.println("name:");
+       // System.out.println("name:");
         String mangaName = lc.takeMangaName(url);
-        System.out.println("host:");
+     //   System.out.println("host:");
         String mangaHost = lc.takeMangaHost(url);
         //char ch[] = chapArray[0].toCharArray();
 
@@ -62,10 +62,14 @@ public class DownloadRange {
         String urlChap;
         for(String str1: chapArray){
             if(str1.compareTo(start)==0){
-                System.out.println("начало найдено");
+           //     System.out.println("начало найдено");
+          //      System.out.println(str1);
+           //     System.out.println(start);
             }
             if(str1.compareTo(finish)==0){
-                System.out.println("конец найден");
+            //    System.out.println("конец найден");
+            //    System.out.println(str1);
+           //     System.out.println(finish);
             }
         }
         ImagesDownloader id = new ImagesDownloader();
@@ -74,10 +78,11 @@ public class DownloadRange {
                 urlChap = "http://" + mangaHost + "/" + mangaName + "/";
                 //System.out.println(urlChap);
                 if ((chapArray[i].compareTo(start) == 0) || canStart) {
-                    System.out.println(urlChap);
+                 //   System.out.println(urlChap);
                     canStart = true;
                     urlChap = urlChap + chapArray[i].replace("-", "/");
-                    System.out.println("urlChap: " + urlChap);
+                 //   System.out.println("urlChap not One: "+urlChap);
+                 //   System.out.println("urlChap: " + urlChap);
                     id.downloadImages(urlChap);
                     if (chapArray[i].compareTo(finish) == 0) {
                         break;
@@ -89,10 +94,10 @@ public class DownloadRange {
                 urlChap = "http://" + mangaHost + "/" + mangaName + "/";
                 //System.out.println(urlChap);
                 if ((chapArray[i].compareTo(start) == 0) || canStart) {
-                    System.out.println(urlChap);
+                  //  System.out.println(urlChap);
                     canStart = true;
                     urlChap = urlChap + chapArray[i].replace("-", "/");
-                    System.out.println("urlChap: " + urlChap);
+                  //  System.out.println("urlChap: " + urlChap);
 
                     id.downloadImagesToOneFolder(urlChap);
                     if (chapArray[i].compareTo(finish) == 0) {
