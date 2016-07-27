@@ -7,8 +7,8 @@
 *.jpg
 *.png
 *.iml
-MangaDownloader-.iml
 *.properties
-mangadownloader-.xml
-*.MF
+*.xml
 *.txt
+*.gitignore
+
