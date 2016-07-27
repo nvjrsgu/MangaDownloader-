@@ -15,6 +15,7 @@ public class GUI2 extends JFrame {
     String url;
     int first_index, last_index;
     String start, finish;
+    JCheckBox jcb;
 
     GUI2() {
         JFrame jfrm = new JFrame();
@@ -24,6 +25,8 @@ public class GUI2 extends JFrame {
         jfrm.setSize(new Dimension(400,380));
         jfrm.setMinimumSize(new Dimension(360,360));
         jpnl_top = new JPanel();
+        jcb = new JCheckBox("Загрузить главы в одну папку?");
+        jcb.setSelected(true);
       //  jpnl_top.setPreferredSize(new Dimension(40,400));
         jpnl_middle = new JPanel();
         jpnl_bottom = new JPanel();
@@ -81,7 +84,8 @@ public class GUI2 extends JFrame {
         });
 
         jbtn_start.addActionListener(ae -> {
-            new DownloadRange(chapters_adress, start, finish, url);
+            //jcb.isSelected();
+            new DownloadRange(chapters_adress, start, finish, url, jcb.isSelected());
         });
 
         jpnl_top.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -91,6 +95,7 @@ public class GUI2 extends JFrame {
         jpnl_middle.add(jscr_left);
         jpnl_middle.add(jscr_right);
         jpnl_top.add(jtf_adress);
+        jpnl_bottom.add(jcb);
         jpnl_bottom.add(jbtn_start);
 c.fill = GridBagConstraints.HORIZONTAL;
         //c.gridx = 0;

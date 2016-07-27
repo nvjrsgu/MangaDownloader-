@@ -38,4 +38,31 @@ public class ImagesDownloader {
             System.out.println("Эта глава уже скачана");
         }
     }
-}
+
+
+    public void downloadImagesToOneFolder(String chapUrl) {
+        ChapterSearchImages csi = new ChapterSearchImages();
+        String imageUrls[] = csi.searchImages(chapUrl);
+        LinkCutter lc = new LinkCutter();
+        String mangaName = lc.takeMangaName(chapUrl);
+        String mangaChap = lc.takeMangaChap(chapUrl);
+        String mangaVol = lc.takeMangaVol(chapUrl);
+        String mangaHost = lc.takeMangaHost(chapUrl);
+
+        String path = mangaHost+"/"+mangaName+"/";
+
+        DownloadImage di= new DownloadImage();
+        String[] splittedImageUrl;
+        File f = new File(path);
+        if(!f.exists()) {
+            f.mkdirs();
+        }
+            for (String im : imageUrls) {
+                splittedImageUrl = lc.splitUrl(im);
+                String imageName = mangaName+"_"+mangaVol+"_"+mangaChap+"_"+splittedImageUrl[splittedImageUrl.length - 1];
+                System.out.println("ImagesDownloader - searchChapters");
+                System.out.println("Ссылка: " + im + "\nПуть: " + (path + imageName));
+                di.imageDownload(im, path + imageName);
+            }
+        }
+    }
