@@ -62,7 +62,7 @@ public class GUI2 extends JFrame {
         jlist_left.addListSelectionListener(lse -> {
             if(!lse.getValueIsAdjusting()) {
                 first_index = jlist_left.getSelectedIndex();
-                System.out.println(chapters_view[first_index]);
+                //System.out.println(chapters_view[first_index]);
                 start = chapters_adress[first_index];
                 jlist_left.setEnabled(false);
                 //last_index = 0;
@@ -77,14 +77,17 @@ public class GUI2 extends JFrame {
         jlist_right.addListSelectionListener(lse -> {
             if(!lse.getValueIsAdjusting()){
                 last_index = jlist_right.getSelectedIndex();
-                System.out.println(chapters_view[last_index]);
-                finish = chapters_adress[last_index];
+                //System.out.println("конецЖ "+last_index);
+                //System.out.println(chapters_view[last_index+first_index]);
+                finish = chapters_adress[last_index+first_index];
+                //System.out.println("Финиш: "+finish);
                 jlist_right.setEnabled(false);
             }
         });
 
         jbtn_start.addActionListener(ae -> {
             //jcb.isSelected();
+
             new DownloadRange(chapters_adress, start, finish, url, jcb.isSelected());
         });
 
