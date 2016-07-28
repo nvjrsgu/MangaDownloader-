@@ -73,6 +73,7 @@ public class DownloadRange {
             }
         }
         ImagesDownloader id = new ImagesDownloader();
+
         if(!toOneFolder) {
             for (int i = 0; i < chapArray.length; i++) {
                 urlChap = "http://" + mangaHost + "/" + mangaName + "/";

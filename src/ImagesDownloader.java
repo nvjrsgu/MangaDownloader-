@@ -21,7 +21,7 @@ public class ImagesDownloader {
 
         String path = mangaHost+"/"+mangaName+"/"+mangaVol+"/"+mangaChap+"/";
 
-        DownloadImage di= new DownloadImage();
+      //  DownloadImage di= new DownloadImage();
         String[] splittedImageUrl;
         File f = new File(path);
         if(!f.exists()) {
@@ -32,7 +32,8 @@ public class ImagesDownloader {
                 String imageName = splittedImageUrl[splittedImageUrl.length - 1];
                // System.out.println("ImagesDownloader - searchChapters");
              //   System.out.println("Ссылка: " + im + "\nПуть: " + (path + imageName));
-                di.imageDownload(im, path + imageName);
+                //di.imageDownload(im, path + imageName);
+                new DownloadImageRun(im, path+imageName);
             }
         } else {
             System.out.println("Эта глава уже скачана");
@@ -51,7 +52,7 @@ public class ImagesDownloader {
 
         String path = mangaHost+"/"+mangaName+"/";
 
-        DownloadImage di= new DownloadImage();
+        //DownloadImage di= new DownloadImage(); //Первая версия
         String[] splittedImageUrl;
         File f = new File(path);
         if(!f.exists()) {
@@ -62,7 +63,8 @@ public class ImagesDownloader {
                 String imageName = mangaName+"_"+mangaVol+"_"+mangaChap+"_"+splittedImageUrl[splittedImageUrl.length - 1];
             //    System.out.println("ImagesDownloader - searchChapters");
              //   System.out.println("Ссылка: " + im + "\nПуть: " + (path + imageName));
-                di.imageDownload(im, path + imageName);
+              //  di.imageDownload(im, path + imageName); первая версия
+                new DownloadImageRun(im, path+imageName);
             }
         }
     }
