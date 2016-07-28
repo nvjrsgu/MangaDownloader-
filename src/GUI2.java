@@ -20,9 +20,6 @@ public class GUI2 extends JFrame {
 
     GUI2() {
         JFrame jfrm = new JFrame();
-        //после упаковки иконка появится
-        //icon = Toolkit.getDefaultToolkit().getImage("icon.png");
-       // jfrm.setIconImage(icon);
         jfrm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jfrm.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -30,7 +27,7 @@ public class GUI2 extends JFrame {
         jfrm.setMinimumSize(new Dimension(360,360));
 
         jpnl_top = new JPanel();
-        jcb = new JCheckBox("Загрузить главы в одну папку?");
+        jcb = new JCheckBox("Download all chapters in one folder?");
         jcb.setSelected(true);
       //  jpnl_top.setPreferredSize(new Dimension(40,400));
         jpnl_middle = new JPanel();
@@ -56,22 +53,28 @@ public class GUI2 extends JFrame {
             url = ae.getActionCommand();
             chapters_view = msc.searchChapters(url, false);
             chapters_adress = msc.searchChapters(url, true);
-            dlm_right.clear();
+            dlm_right.removeAllElements();
+            dlm_left.removeAllElements();
             for(String addChap: chapters_view){
                 dlm_left.addElement(addChap);
             }
         });
 
 //добавляем список глав конца загрузки
-        //ошибка при повторном выборе
+        //ошибка при выборе в левом списке первой главы повторно
         jlist_left.addListSelectionListener(lse -> {
             if(!lse.getValueIsAdjusting()) {
                 first_index = jlist_left.getSelectedIndex();
+                if(first_index < 0)
+                    first_index = 0;
+                System.out.println("начало: "+first_index);
                 //System.out.println(chapters_view[first_index]);
                 start = chapters_adress[first_index];
-                jlist_left.setEnabled(false);
+                System.out.println("старт: "+start);
+              //  jlist_left.setEnabled(false);
                 //last_index = 0;
                 dlm_right.removeAllElements();
+
                 for(int i = first_index; i < chapters_view.length; i++) {
                     dlm_right.addElement(chapters_view[i]);
                 }
@@ -82,23 +85,27 @@ public class GUI2 extends JFrame {
         jlist_right.addListSelectionListener(lse -> {
             if(!lse.getValueIsAdjusting()){
                 last_index = jlist_right.getSelectedIndex();
-                //System.out.println("конецЖ "+last_index);
+                if(last_index < 0)
+                    last_index = 0;
+                System.out.println("конец: "+last_index);
                 //System.out.println(chapters_view[last_index+first_index]);
                 finish = chapters_adress[last_index+first_index];
-                //System.out.println("Финиш: "+finish);
-                jlist_right.setEnabled(false);
+
+                System.out.println("Финиш: "+finish);
+               // jlist_right.setEnabled(false);
             }
         });
 
         jbtn_start.addActionListener(ae -> {
             //jcb.isSelected();
-
+            //jbtn_start.setEnabled(false);
             new DownloadRange(chapters_adress, start, finish, url, jcb.isSelected());
+            jbtn_start.setEnabled(false);
         });
 
-        jpnl_top.setBorder(BorderFactory.createLineBorder(Color.RED));
-        jpnl_middle.setBorder(BorderFactory.createLineBorder(Color.GREEN));
-        jpnl_bottom.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+      //  jpnl_top.setBorder(BorderFactory.createLineBorder(Color.RED));
+   //     jpnl_middle.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+    //    jpnl_bottom.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 
         jpnl_middle.add(jscr_left);
         jpnl_middle.add(jscr_right);
