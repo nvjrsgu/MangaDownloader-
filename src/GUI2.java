@@ -6,7 +6,7 @@ import java.awt.*;
 public class GUI2 extends JFrame {
 
     JPanel jpnl_top, jpnl_middle, jpnl_bottom;
-    static JButton jbtn_start;
+    JButton jbtn_start;
     JTextField jtf_adress;
     JScrollPane jscr_left, jscr_right;
     DefaultListModel<String> dlm_left, dlm_right;
