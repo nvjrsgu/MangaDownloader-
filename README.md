@@ -1,5 +1,6 @@
 # MangaDownloader-
+###for tests:
 [MangaDownloaderV0.2.X](https://github.com/nvjrsgu/MangaDownloader-/blob/master/out/MangaDownloader-.jar)
 
-Загрузка манги с сайтов: readmanga.me, mintnabga.com
+Download manga from sites: readmanga.me, mintnabga.com
 
