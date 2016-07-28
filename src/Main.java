@@ -17,9 +17,17 @@ public class Main {
         ChapterSearchImages csi = new ChapterSearchImages();
         String imArr[] = csi.searchImages("http://mintmanga.com/sun_ken_rock/vol25/171");
 */
-
-       //ImagesDownloader id = new ImagesDownloader();
-        //id.downloadImages("http://readmanga.me/fairytail/vol58/494");
+/*
+        long start = System.nanoTime();
+        ImagesDownloader id = new ImagesDownloader();
+        id.downloadImages("http://readmanga.me/fairytail/vol58/494");
+        long end = System.nanoTime();
+        */
+        //System.out.println("Время выполнения: "+(end-start)/1000);
+        //ImageDownloaderOld ido = new ImageDownloaderOld();
+        //ido.downloadImages("http://readmanga.me/fairytail/vol58/494");
+        //long end2 = System.nanoTime();
+        //System.out.println("Время выполнения: "+(end2-end)/1000);
         //Consol con = new Consol();
         //System.out.println("Range");
         //DownloadRange dr = new DownloadRange(chapUrls,"vol47/408","vol47/409","http://readmanga.me/bleach_");
