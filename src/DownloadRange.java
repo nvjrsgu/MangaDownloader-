@@ -9,9 +9,6 @@ public class DownloadRange {
         String mangaName = lc.takeMangaName(url);
         System.out.println("host:");
         String mangaHost = lc.takeMangaHost(url);
-        //char ch[] = chapArray[0].toCharArray();
-
-
 
         start = start.replaceAll("-","/");
         finish = finish.replaceAll("-", "/");
@@ -26,7 +23,7 @@ public class DownloadRange {
                 System.out.println("конец найден");
             }
         }
-        ImagesDownloader id = new ImagesDownloader();
+       // ImagesDownloader id = new ImagesDownloader();
         for(int i = 0; i < chapArray.length; i++) {
             urlChap = "http://"+mangaHost+"/"+mangaName+"/";
             //System.out.println(urlChap);
@@ -35,7 +32,8 @@ public class DownloadRange {
                 canStart = true;
                     urlChap = urlChap + chapArray[i].replace("-","/");
                     System.out.println("urlChap: "+urlChap);
-                id.downloadImages(urlChap);
+                new ImagesDownloaderRun(urlChap, false);
+              //  id.downloadImages(urlChap);
                 if(chapArray[i].compareTo(finish) == 0){
                     break;
                 }
@@ -72,7 +70,7 @@ public class DownloadRange {
            //     System.out.println(finish);
             }
         }
-        ImagesDownloader id = new ImagesDownloader();
+      //  ImagesDownloader id = new ImagesDownloader();
 
         if(!toOneFolder) {
             for (int i = 0; i < chapArray.length; i++) {
@@ -84,7 +82,8 @@ public class DownloadRange {
                     urlChap = urlChap + chapArray[i].replace("-", "/");
                  //   System.out.println("urlChap not One: "+urlChap);
                  //   System.out.println("urlChap: " + urlChap);
-                    id.downloadImages(urlChap);
+                   // id.downloadImages(urlChap);
+                    new ImagesDownloaderRun(urlChap, false);
                     if (chapArray[i].compareTo(finish) == 0) {
                         break;
                     }
@@ -100,7 +99,8 @@ public class DownloadRange {
                     urlChap = urlChap + chapArray[i].replace("-", "/");
                   //  System.out.println("urlChap: " + urlChap);
 
-                    id.downloadImagesToOneFolder(urlChap);
+                  //  id.downloadImagesToOneFolder(urlChap);
+                    new ImagesDownloaderRun(urlChap, true);
                     if (chapArray[i].compareTo(finish) == 0) {
                         break;
                     }
