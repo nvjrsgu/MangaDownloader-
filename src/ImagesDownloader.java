@@ -25,15 +25,16 @@ public class ImagesDownloader {
         File f = new File(path);
         if(!f.exists()) {
             f.mkdirs();
+        }
             for (String im : imageUrls) {
-
                 splittedImageUrl = lc.splitUrl(im);
                 String imageName = splittedImageUrl[splittedImageUrl.length - 1];
-                new DownloadImageRun(im, path+imageName);
+                if((new File(path+imageName)).exists()){
+                    System.out.println("эта страница уже скачана");
+                } else {
+                    new DownloadImageRun(im, path + imageName);
+                }
             }
-        } else {
-            System.out.println("Эта глава уже скачана");
-        }
     }
 
 
@@ -56,7 +57,11 @@ public class ImagesDownloader {
             for (String im : imageUrls) {
                 splittedImageUrl = lc.splitUrl(im);
                 String imageName = mangaName+"_"+mangaVol+"_"+mangaChap+"_"+splittedImageUrl[splittedImageUrl.length - 1];
-                new DownloadImageRun(im, path+imageName);
+                if((new File(path+imageName)).exists()){
+                    System.out.println("эта страница уже скачана");
+                } else {
+                    new DownloadImageRun(im, path + imageName);
+                }
             }
         }
 

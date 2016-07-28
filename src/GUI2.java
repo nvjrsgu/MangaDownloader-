@@ -6,7 +6,7 @@ import java.awt.*;
 public class GUI2 extends JFrame {
 
     JPanel jpnl_top, jpnl_middle, jpnl_bottom;
-    JButton jbtn_start;
+    static JButton jbtn_start;
     JTextField jtf_adress;
     JScrollPane jscr_left, jscr_right;
     DefaultListModel<String> dlm_left, dlm_right;
@@ -100,7 +100,7 @@ public class GUI2 extends JFrame {
             //jcb.isSelected();
             //jbtn_start.setEnabled(false);
             new DownloadRange(chapters_adress, start, finish, url, jcb.isSelected());
-            jbtn_start.setEnabled(false);
+            //jbtn_start.setEnabled(false);
         });
 
       //  jpnl_top.setBorder(BorderFactory.createLineBorder(Color.RED));
