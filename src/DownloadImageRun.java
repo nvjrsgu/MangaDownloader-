@@ -13,8 +13,8 @@ public class DownloadImageRun implements Runnable {
     DownloadImageRun(String imageLink, String path) {
         this.imageLink = imageLink;
         this.path = path;
-        Thread myThready = new Thread(this);	//Создание потока "myThready"
-        myThready.start();
+        Thread th = new Thread(this);
+        th.start();
     }
     public void run(){
         try(InputStream in = new URL(imageLink).openStream()){
