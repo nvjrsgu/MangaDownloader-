@@ -37,15 +37,27 @@ public class LinkCutter {
 
     //определить название манги
     public String takeMangaName(String url){
+        String host = takeMangaHost(url);
         String[] urlArr = splitUrl(url);
         //проверка
-        if(urlArr.length>=2) {
-            //System.out.println("LinkCutter - takeMangaName\n"+urlArr[1]);
-            return urlArr[1];
-        } else {
-            //System.out.println("LinkCutter - takeMangaName\nnot found name");
+        if(host.compareTo("mintmanga")==0 || host.compareTo("readmanga.me")==0) {
+            if (urlArr.length >= 2) {
+                //System.out.println("LinkCutter - takeMangaName\n"+urlArr[1]);
+                return urlArr[1];
+            } else {
+                //System.out.println("LinkCutter - takeMangaName\nnot found name");
+                return "not found name";
+            }
+        } else if(host.compareTo("mangafox.me")==0){
+            if (urlArr.length >= 3) {
+                //System.out.println("LinkCutter - takeMangaName\n"+urlArr[1]);
+                return urlArr[2];
+            } else {
+                //System.out.println("LinkCutter - takeMangaName\nnot found name");
+                return "not found name";
+            }
+        } else
             return "not found name";
-        }
     }
 
     public String takeMangaVol(String url) {
