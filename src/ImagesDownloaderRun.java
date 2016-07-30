@@ -11,9 +11,33 @@ public class ImagesDownloaderRun extends ImagesDownloader implements Runnable {
         th.start();
     }
     public void run(){
-        if(toOneFolder)
+        if(toOneFolder) {
+
             downloadImagesToOneFolder(chapUrl);
-        else
+            DownloadRange.doqnloadProgress++;
+            int pre = GUI2.jpb.getValue();
+            //System.out.println("_______"+pre++);
+            pre++;
+            GUI2.jpb.setValue(pre);
+            /*
+            if(DownloadRange.doqnloadProgress == ( GUI2.last_index+1)){
+                GUI2.jpb.setIndeterminate(false);
+                GUI2.jpb.setValue( GUI2.last_index+ GUI2.first_index);
+            }*/
+           // System.out.println(DownloadRange.doqnloadProgress);
+        }
+        else {
             downloadImages(chapUrl);
+            DownloadRange.doqnloadProgress++;
+            int pre = GUI2.jpb.getValue();
+            pre++;
+            GUI2.jpb.setValue(pre);
+            /*
+            if(DownloadRange.doqnloadProgress == ( GUI2.last_index+1)){
+                GUI2.jpb.setIndeterminate(false);
+                GUI2.jpb.setValue( GUI2.last_index+ GUI2.first_index);
+            }*/
+            //System.out.println(DownloadRange.doqnloadProgress);
+        }
     }
 }

@@ -2,6 +2,10 @@
  * Created by cjvnj on 26.07.2016.
  */
 public class DownloadRange {
+    volatile static int doqnloadProgress;
+    static {
+        doqnloadProgress = 0;
+    }
     DownloadRange(String[] chapArray, String start, String finish, String url) {
         LinkCutter lc = new LinkCutter();
         boolean format;
@@ -100,6 +104,7 @@ public class DownloadRange {
                   //  System.out.println("urlChap: " + urlChap);
 
                   //  id.downloadImagesToOneFolder(urlChap);
+
                     new ImagesDownloaderRun(urlChap, true);
                     if (chapArray[i].compareTo(finish) == 0) {
                         break;

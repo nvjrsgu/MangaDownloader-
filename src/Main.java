@@ -5,18 +5,21 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-/*
 
-	   LinkCutter lc= new LinkCutter();
-        String cuttedLink[] = lc.splitUrl("http://readmanga.me/fairytail/vol58/494/ / / ");
-        String name = lc.takeMangaName("http://readmanga.me/fairytail/vol58/494/ / / ");
-        String host = lc.takeMangaHost("http://readmanga.me/fairytail/vol58/494/ / / ");
 
-        MangaSearchChapters msc = new MangaSearchChapters();
-        String chapUrls[] = msc.searchChapters("http://mintmanga.com/sun_ken_rock", true);
-        ChapterSearchImages csi = new ChapterSearchImages();
-        String imArr[] = csi.searchImages("http://mintmanga.com/sun_ken_rock/vol25/171");
-*/
+	 //  LinkCutter lc= new LinkCutter();
+     //   String cuttedLink[] = lc.splitUrl("http://readmanga.me/fairytail/vol58/494/ / / ");
+      //  String name = lc.takeMangaName("http://readmanga.me/fairytail/vol58/494/ / / ");
+     //   String host = lc.takeMangaHost("http://readmanga.me/fairytail/vol58/494/ / / ");
+
+      //  MangaSearchChapters msc = new MangaSearchChapters();
+       // String chapUrls[] = msc.searchChapters("http://mangafox.me/manga/chihayafuru/", true);
+
+
+
+        //ChapterSearchImages csi = new ChapterSearchImages();
+        //String imArr[] = csi.searchImages("http://mintmanga.com/sun_ken_rock/vol25/171");
+
 /*
         long start = System.nanoTime();
         ImagesDownloader id = new ImagesDownloader();

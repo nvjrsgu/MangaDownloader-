@@ -13,10 +13,10 @@ public class GUI2 extends JFrame {
     JList<String> jlist_left, jlist_right;
     String[] chapters_view, chapters_adress;
     String url;
-    int first_index, last_index;
+    static int first_index, last_index;
     String start, finish;
     JCheckBox jcb;
-    //Image icon;
+    static JProgressBar jpb;
 
     GUI2() {
         JFrame jfrm = new JFrame();
@@ -42,6 +42,7 @@ public class GUI2 extends JFrame {
         jlist_right.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jscr_left = new JScrollPane(jlist_left);
         jscr_right = new JScrollPane(jlist_right);
+        jpb = new JProgressBar();
 
         jbtn_start = new JButton("Start");
 
@@ -53,6 +54,9 @@ public class GUI2 extends JFrame {
             url = ae.getActionCommand();
             chapters_view = msc.searchChapters(url, false);
             chapters_adress = msc.searchChapters(url, true);
+            for(String addChap: chapters_adress){
+               System.out.println(addChap);
+            }
             dlm_right.removeAllElements();
             dlm_left.removeAllElements();
             for(String addChap: chapters_view){
@@ -87,11 +91,13 @@ public class GUI2 extends JFrame {
                 last_index = jlist_right.getSelectedIndex();
                 if(last_index < 0)
                     last_index = 0;
-                System.out.println("конец: "+last_index);
+               // System.out.println("конец: "+last_index);
                 //System.out.println(chapters_view[last_index+first_index]);
                 finish = chapters_adress[last_index+first_index];
-
-                System.out.println("Финиш: "+finish);
+                jpb.setMinimum(0);
+                jpb.setMaximum(last_index);
+                jpb.setStringPainted(true);
+                //System.out.println("Финиш: "+finish);
                // jlist_right.setEnabled(false);
             }
         });
@@ -100,8 +106,12 @@ public class GUI2 extends JFrame {
             //jcb.isSelected();
             //jbtn_start.setEnabled(false);
             new DownloadRange(chapters_adress, start, finish, url, jcb.isSelected());
+            //jpb.setIndeterminate(true);
+            //jpb.setString("Downloading");
+            System.out.println(last_index);
             //jbtn_start.setEnabled(false);
         });
+
 
       //  jpnl_top.setBorder(BorderFactory.createLineBorder(Color.RED));
    //     jpnl_middle.setBorder(BorderFactory.createLineBorder(Color.GREEN));
@@ -112,6 +122,7 @@ public class GUI2 extends JFrame {
         jpnl_top.add(jtf_adress);
         jpnl_bottom.add(jcb);
         jpnl_bottom.add(jbtn_start);
+        jpnl_bottom.add(jpb);
 c.fill = GridBagConstraints.HORIZONTAL;
         //c.gridx = 0;
       //  c.gridy = 0;
@@ -125,7 +136,7 @@ c.gridy = 1;
         c.gridy = 2;
         c.gridwidth=3;
         //c.gridx = 1;
-        c.ipady = 0;
+        c.ipady = 35;
         c.insets = new Insets(10,0 , 0, 0);
         jfrm.add(jpnl_bottom, c);
 
